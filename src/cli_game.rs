@@ -3,6 +3,7 @@ use inquire::DateSelect;
 use inquire::Select;
 use std::collections::HashMap;
 use std::error::Error;
+use rand::Rng;
 
 enum Month {
     January,
@@ -51,7 +52,7 @@ pub fn choose_calendar_date() -> Result<i32, Box<dyn Error>> {
     let month_num = date.month();
     let month = Month::from_u32(month_num).expect("Invalid month");
 
-    let salary = match month {
+    let base_salary = match month {
         Month::January => 100,
         Month::February => 200,
         Month::March => 300,
@@ -65,10 +66,23 @@ pub fn choose_calendar_date() -> Result<i32, Box<dyn Error>> {
         Month::November => 1100,
         Month::December => 1200,
     };
-
-    println!("Your total salary is: {}$", salary);
     
-    Ok(salary)
+    let mut rng = rand::thread_rng();
+    let random_number = rng.gen_range(100..=300);
+    let birthday_weekday = date.weekday();
+
+    let salary_with_bonus = match birthday_weekday {
+        Weekday::Sat | Weekday::Sun => {
+            println!("It's a weekend. Adding bonus to salary."); base_salary + random_number
+        },
+        _ => base_salary,
+    };
+
+    println!("Bonus: {}$", random_number);
+
+    println!("Your total salary is: {}$", salary_with_bonus);
+    
+    Ok(salary_with_bonus)
 }
 
 pub fn choose_birthday_item(mut salary: i32) {
