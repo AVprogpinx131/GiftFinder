@@ -12,7 +12,7 @@ fn main() {
     vectors::vectors_operations();
 
     let mut person = Person::new (
-        String::from("Andrus Vaher"),
+        String::from("Elon Musk"),
         20,
         Gender::Male,
         vec![String::from("Programming"), String::from("Reading"), String::from("Gaming")],
