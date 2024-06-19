@@ -1,10 +1,14 @@
-mod vectors;
-mod person;
+mod practice;
+mod game;
 
-use crate::person::Person;
-use crate::person::Gender;
+use practice::vectors;
+use practice::person::{Person, Gender};
+use game::cli_game;
 
 fn main() {
+    /*
+     ********** Practice Rust **********
+    */
     vectors::vectors_operations();
 
     let mut person = Person::new (
@@ -22,4 +26,11 @@ fn main() {
 
     println!("Updated Person: {:?}", person);
     println!("Number of Hobbies: {}", person.hobby_count());
+
+    /* 
+    ********** Actual Game ********** 
+    */
+    let salary = cli_game::choose_calendar_date().unwrap();
+    
+    cli_game::choose_birthday_item(salary);
 }
