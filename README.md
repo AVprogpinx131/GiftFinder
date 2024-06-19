@@ -1,7 +1,9 @@
 # Find your perfect birthday gifts
 
 ### Overview 
-Made a simple Rust CLI game with inquire library. Check out library Github repo [here](https://github.com/mikaelmello/inquire).
+Made a simple Rust CLI game with inquire library. Check out library Github repo [here](https://github.com/mikaelmello/inquire). 
+
+In practice module I added the learning content for enums, structs and vectors. 
 
 ### Game logic 
 The customer gets a certain amount of money after selecting his birthday date from the calendar. If your birthday is in the weekend, we add 100-300$ (used rand library to generate random number) to the customers account as a bonus. 
